@@ -1,0 +1,5 @@
+
+* FIREBASE : // npm install firebase //  (Usado para vazer a autenticação por email e senha e armazenar dados)
+* REACT-ROUTER-DOM : // npm install react-router-dom //
+
+* // /* "web-vitals": "^0.2.4" */ // retirado do (package.json)
