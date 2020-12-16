@@ -1,5 +1,6 @@
 
 * FIREBASE : // npm install firebase //  (Usado para vazer a autenticação por email e senha e armazenar dados)
 * REACT-ROUTER-DOM : // npm install react-router-dom //
+* REACT-ICONS : // npm install react-icons //
 
 * // /* "web-vitals": "^0.2.4" */ // retirado do (package.json)
