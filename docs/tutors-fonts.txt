@@ -1,3 +1,4 @@
 * Autenticação com Firebase e Context API no ReactJS
 // https://www.youtube.com/watch?v=c3pUMcMSn-w //
 
+<button onClick={() => authConfig.auth().signOut()}>Desligar</button>

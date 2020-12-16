@@ -5,6 +5,7 @@ import { AuthContext } from "../auth/AuthContext";
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
+import Logo from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png'
 
 
 export const Logar = withRouter(({history}) => {
@@ -40,8 +41,8 @@ export const Logar = withRouter(({history}) => {
             <CssBaseline />
             <Container maxWidth="md">
                 <div className="card-login">
-                    <img src="../assets/pngs/LOGO-AGRODADOS.png" alt=""/>
-                    <h1>Entrar</h1>
+                    {/* <h1>Entrar</h1> */}
+                    <img src={Logo} alt="" width="250px"/>
                     <form onSubmit={loginFunc}>
                         <div>
                             <input className="input-email" type="email" placeholder="Email" name="email" required/>
