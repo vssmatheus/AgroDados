@@ -119,6 +119,7 @@ export const Inicio = ({ history }) => {
         setOpen(false);
     };
 
+
     return (
 
         <div className={classes.root}>
@@ -152,7 +153,7 @@ export const Inicio = ({ history }) => {
         </Toolbar>
       </AppBar>
 
-      <Drawer      
+      <Drawer  
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,

@@ -1,0 +1,10 @@
+.content-app {
+    background: transparent;
+    width: 85%;
+    border-radius: 10px;
+    display: block;
+    margin: 25% auto;
+    float: right;
+    padding: 25px;
+    border: 1px #555 solid;
+}
