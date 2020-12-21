@@ -1,10 +1,75 @@
 .content-app {
     background: transparent;
+    display:inline-table;
     width: 85%;
     border-radius: 10px;
-    display: block;
-    margin: 25% auto;
-    float: right;
-    padding: 25px;
+    padding: 5px;
     border: 1px #555 solid;
+    height: 100%;
+}
+
+input{
+    outline: none;
+    border: none;
+}
+
+button, input{
+    overflow: visible;
+    outline: none;
+    border: none;
+}
+
+.matt-btn{
+    background: rgb(35,149,30);
+    background: linear-gradient(90deg, rgba(35,149,30,1) 0%, rgba(47,180,42,1) 52%, rgba(102,230,97,1) 100%);
+    border-radius: 5px;
+    width: 300px;
+    padding: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 2% auto;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.matt-btn-blue{
+    background: rgb(30,134,149);
+    background: linear-gradient(90deg, rgba(30,134,149,1) 0%, rgba(42,156,180,1) 52%, rgba(97,225,230,1) 100%);
+    border-radius: 5px;
+    width: 300px;
+    padding: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 2% auto;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.matt-btn:hover{
+    filter: brightness(90%);
+}
+.matt-btn-blue:hover{
+    filter: brightness(90%);
+}
+
+.back-to-login{
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.back-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #555;
+}
+.back-text{
+    font-size: 11pt; 
+    text-decoration: none !important; 
+    margin-left: 6px
 }

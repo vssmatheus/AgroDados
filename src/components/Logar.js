@@ -5,10 +5,26 @@ import { AuthContext } from "../auth/AuthContext";
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
-import Logo from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png'
+import Logo from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      overflow: "hidden",
+      margin: 0,
+      height: "100vh",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  }));
 
 
 export const Logar = withRouter(({history}) => {
+    const classes = useStyles();
+    
     const loginFunc = useCallback(
         async (event) =>{
             event.preventDefault();
@@ -37,32 +53,32 @@ export const Logar = withRouter(({history}) => {
     }
 
     return (
-        <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="md">
-                <div className="card-login">
-                    {/* <h1>Entrar</h1> */}
-                    <img src={Logo} alt="" width="250px"/>
-                    <form onSubmit={loginFunc}>
-                        <div>
-                            <input className="input-email" type="email" placeholder="Email" name="email" required/>
-                        </div>
-                        <div>
-                            <input className="input-senha" placeholder="Senha" type="password" name="senha" required/>
-                        </div>                    
-                        {/* <button type="submit">Logar</button> */}
-                        <div>
-                            <button className="matt-btn" type="submit" >Login</button>
-                        </div>
-                        <div className="options-login">
-                            <a id="recuperarSenha" href="#">Recuperar senha</a>
-                            <span>|</span>
-                            {/* <a id="cadastrar" href="/cadastrar"> Cadastrar-se</a> */}
-                            <Link id="cadastrar" to="/cadastrar">Cadastrar-se</Link>
-                        </div>
-                    </form>
-                </div>
-            </Container>            
-        </React.Fragment>
+        <div className={classes.root}>
+            <React.Fragment>
+                <CssBaseline />
+                <Container maxWidth="md" >
+                    <div className="card-login">
+                        {/* <h1>Entrar</h1> */}
+                        <img src={Logo} alt="" width="250px"/>
+                        <form onSubmit={loginFunc}>
+                            <div>
+                                <input className="input-email" type="email" placeholder="Email" name="email" required/>
+                            </div>
+                            <div>
+                                <input className="input-senha" placeholder="Senha" type="password" name="senha" required/>
+                            </div>
+                            <div>
+                                <button className="matt-btn" type="submit" >Login</button>
+                            </div>
+                            <div className="options-login">
+                                <a id="recuperarSenha" href="#">Recuperar senha</a>
+                                <span>|</span>
+                                <Link id="cadastrar" to="/cadastrar">Cadastrar-se</Link>
+                            </div>
+                        </form>
+                    </div>
+                </Container>            
+            </React.Fragment>
+        </div>
     );
 });

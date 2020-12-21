@@ -11,7 +11,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   container: {
-    display: "flex"
+    display: "flex",
+    justifyContent: "center",
+    alignItems :"center"
   }
 });
 
@@ -23,13 +25,12 @@ export default function App() {
         <RotaPrivada exact from="/" component={Inicio} />
         <div className={classes.container}>
           <Switch>        
-            <Route exact path="/dashboard" render={props => <Dashboard {...props} />} />
-            <Route exact path="/localidades" render={props => <Localidades {...props} />} />
+            <Route exact path="/dashboard" component={Dashboard}  />
+            <Route exact path="/localidades" component={Localidades} />
           </Switch>
         </div>
         <Route exact path="/logar" component={Logar} />
-        <Route exact path="/cadastrar" component={Cadastrar} />      
-                  
+        <Route exact path="/cadastrar" component={Cadastrar} />
       </BrowserRouter>        
     </AuthProvider>   
   );
