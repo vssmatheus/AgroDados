@@ -41,7 +41,7 @@ export const Dashboard = withRouter(({history}) => {
           <Grid container className={classes.container}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={classes.verticalPaper} alignItems="flex-start" style={{ flexGrow: 1 }}>
-                  <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere, vero, qui repudiandae doloremque assumenda hic ab quae, ea blanditiis eius. Temporibus molestias aut nisi, consequuntur quo voluptas veniam repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ipsum itaque quibusdam, quaerat maiores maxime quod ab necessitatibus quidem distinctio porro voluptas eveniet voluptatibus provident molestias aperiam autem, repellendus mollitia.</h1>                  
+                  <h1>Dashboard.</h1>                  
                 </Paper>
             </Grid>
           </Grid>

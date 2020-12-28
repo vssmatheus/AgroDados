@@ -69,7 +69,7 @@ export const RecuperarSenha = withRouter(({history}) => {
                             </Link>
                         </div>
                     </div>
-                </Container>            
+                </Container>          
             </React.Fragment>
         </div>
     );
