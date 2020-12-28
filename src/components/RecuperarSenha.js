@@ -53,14 +53,15 @@ export const RecuperarSenha = withRouter(({history}) => {
                 <CssBaseline />
                 <Container maxWidth="md" >
                     <div className="card-login">
-                        {/* <h1>Entrar</h1> */}
-                        <img src={Logo} alt="" width="250px"/>
+                        <h1>Esqueceu sua senha?</h1>
+                        <p>Insira o seu email cadastrado para recuperar sua conta,<br/>em breve enviaremos um link para recuperação!</p>
+                        {/* <img src={Logo} alt="" width="250px"/> */}
                         <form onSubmit={recuperarFunc}>
                             <div>
                                 <input className="input-email" type="email" placeholder="Seu e-mail" name="email" required/>
                             </div>
                             <div>
-                                <button className="matt-btn-blue" type="submit" >Recuperar Senha</button>
+                                <button className="matt-btn-blue" type="submit" >Enviar</button>
                             </div>
                         </form>
                         <div className="back-to-login">
