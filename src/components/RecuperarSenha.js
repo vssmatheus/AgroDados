@@ -5,7 +5,6 @@ import {FiArrowLeft} from 'react-icons/fi';
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
-import Logo from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
 import { makeStyles } from "@material-ui/core/styles";
 
 
@@ -55,7 +54,6 @@ export const RecuperarSenha = withRouter(({history}) => {
                     <div className="card-login">
                         <h1>Esqueceu sua senha?</h1>
                         <p>Insira o seu email cadastrado para recuperar sua conta,<br/>em breve enviaremos um link para recuperação!</p>
-                        {/* <img src={Logo} alt="" width="250px"/> */}
                         <form onSubmit={recuperarFunc}>
                             <div>
                                 <input className="input-email" type="email" placeholder="Seu e-mail" name="email" required/>
