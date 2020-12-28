@@ -1,7 +1,7 @@
-import React, {useCallback, useContext} from 'react';
-import { Redirect, withRouter, Link } from "react-router-dom";
+import React, {useCallback } from 'react';
+import { withRouter, Link } from "react-router-dom";
 import { authConfig} from "../auth/config";
-import { AuthContext } from "../auth/AuthContext";
+import {FiArrowLeft} from 'react-icons/fi';
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
@@ -22,35 +22,30 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export const Logar = withRouter(({history}) => {
+export const RecuperarSenha = withRouter(({history}) => {
     const classes = useStyles();
     
-    const loginFunc = useCallback(
+    const recuperarFunc = useCallback(
         async (event) =>{
             event.preventDefault();
 
-            const { email, senha } = event.target.elements; 
+            const { email } = event.target.elements; 
 
             try{
                 await authConfig
                 .auth()
-                .signInWithEmailAndPassword(email.value, senha.value);
-                history.push('/');
+                .sendPasswordResetEmail(email.value);
+                window.alert("Verifique seu email para Recuperar sua senha!")
+                history.push('/logar');
                 
             } catch (error) {
                 console.log(error);
-                alert("Email ou senha \nInválidos !");
+                alert("Email não cadastrado!");
             }
            
         },
         [history],
     );
-
-    const {usuario} = useContext(AuthContext);
-
-    if(usuario){
-        return <Redirect to="/" />
-    }
 
     return (
         <div className={classes.root}>
@@ -60,22 +55,20 @@ export const Logar = withRouter(({history}) => {
                     <div className="card-login">
                         {/* <h1>Entrar</h1> */}
                         <img src={Logo} alt="" width="250px"/>
-                        <form onSubmit={loginFunc}>
+                        <form onSubmit={recuperarFunc}>
                             <div>
-                                <input className="input-email" type="email" placeholder="Email" name="email" required/>
+                                <input className="input-email" type="email" placeholder="Seu e-mail" name="email" required/>
                             </div>
                             <div>
-                                <input className="input-senha" placeholder="Senha" type="password" name="senha" required/>
-                            </div>
-                            <div>
-                                <button className="matt-btn" type="submit" >Login</button>
-                            </div>
-                            <div className="options-login">
-                                <Link id="recuperarSenha" to="/recuperar">Recuperar senha</Link>
-                                <span>|</span>
-                                <Link id="cadastrar" to="/cadastrar">Cadastrar-se</Link>
+                                <button className="matt-btn-blue" type="submit" >Recuperar Senha</button>
                             </div>
                         </form>
+                        <div className="back-to-login">
+                            <Link className="back-link" to="/logar">
+                                <FiArrowLeft size={25} color="#555" />
+                                <span className="back-text">Voltar ao login</span>
+                            </Link>
+                        </div>
                     </div>
                 </Container>            
             </React.Fragment>

@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-  toolbar: theme.mixins.toolbar,
+  /* toolbar: theme.mixins.toolbar, */
   toolbar: {
     display: 'flex',
     alignItems: 'center',

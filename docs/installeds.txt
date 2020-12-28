@@ -3,4 +3,8 @@
 * REACT-ROUTER-DOM : // npm install react-router-dom //
 * REACT-ICONS : // npm install react-icons //
 
+--> FRAMEWORK - BIBLIOTECA DE ESTILOS
+* MATERIAL-UI: // npm install @material-ui/core // (Biblioteca de componentes React para um desenvolvimento ágil e fácil.)
+
+// necessary //
 * // /* "web-vitals": "^0.2.4" */ // retirado do (package.json)

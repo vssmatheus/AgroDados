@@ -1,4 +1,7 @@
 * Autenticação com Firebase e Context API no ReactJS
 // https://www.youtube.com/watch?v=c3pUMcMSn-w //
 
+* Recuparação de senha com Firebase (Firebase Web Tutorial 2019 - Firebase Forgot Password Web & Firebase Reset Password Tutorial 08)
+// https://www.youtube.com/watch?v=wtnjhbt6ipg&t=33s //
+
 <button onClick={() => authConfig.auth().signOut()}>Desligar</button>

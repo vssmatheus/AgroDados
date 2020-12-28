@@ -5,6 +5,7 @@ import { Cadastrar } from "./components/Cadastrar";
 import { Dashboard } from "./components/Dashboard";
 import { Localidades } from "./components/Localidades";
 import { Logar } from "./components/Logar";
+import { RecuperarSenha } from "./components/RecuperarSenha";
 import { AuthProvider } from "./auth/AuthContext";
 import { RotaPrivada } from "./auth/RotaPrivada";
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,6 +32,7 @@ export default function App() {
         </div>
         <Route exact path="/logar" component={Logar} />
         <Route exact path="/cadastrar" component={Cadastrar} />
+        <Route exact path="/recuperar" component={RecuperarSenha} />
       </BrowserRouter>        
     </AuthProvider>   
   );
