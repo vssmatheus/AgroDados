@@ -17,7 +17,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import MailIcon from '@material-ui/icons/Mail';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import LogoAgrodados from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
@@ -50,11 +49,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   drawer: {
+    background:"red",
     width: drawerWidth,
     flexShrink: 0,
     
   },
   drawerOpen: {
+    background: "#2B353F",
+    color: "#DCE6F0",
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -62,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   drawerClose: {
+    background: "#2B353F",
+    color: "#DCE6F0",
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -95,18 +99,13 @@ export const Inicio = ({ history }) => {
   const itemsList = [
     {
       text: "Dashboard",
-      icon: <DashboardIcon />,
+      icon: <DashboardIcon style={{color: "#DCE6F0"}}/>,
       onClick: () => history.push("/dashboard")
     },
     {
       text: "Localidades",
-      icon: <LocationOnIcon />,
+      icon: <LocationOnIcon style={{color: "#DCE6F0"}}/>,
       onClick: () => history.push("/localidades")
-    },
-    {
-      text: "Contact",
-      icon: <MailIcon />,
-      onClick: () => history.push("/dashboard")
     }
   ];
     const classes = useStyles();
@@ -121,9 +120,7 @@ export const Inicio = ({ history }) => {
         setOpen(false);
     };
 
-
     return (
-
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
@@ -155,7 +152,8 @@ export const Inicio = ({ history }) => {
           </Toolbar>
         </AppBar>
 
-        <Drawer  
+        <Drawer 
+          style={{color: "#DCE6F0"}}
           variant="permanent"
           className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
@@ -169,11 +167,11 @@ export const Inicio = ({ history }) => {
           }}
         >
           <div className={classes.toolbar}>
-            <IconButton onClick={handleDrawerClose}>
+            <IconButton onClick={handleDrawerClose} style={{color: "#DCE6F0"}}>
               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
           </div>
-          <Divider />
+          <Divider style={{color: "#DCE6F0"}}/>
 
           <List>
           {itemsList.map((item, index) => {
