@@ -146,7 +146,7 @@ export const Inicio = ({ history }) => {
             <img src={LogoAgrodados} alt="" width="130px"/>
 
             <IconButton edge="end" style={{marginLeft: "auto"}}>
-              <PowerSettingsNewIcon onClick={() => {if(window.confirm('Deseja sair da aplicação?')) {firebase.auth().signOut()};}}/>
+              <PowerSettingsNewIcon onClick={() => {if(window.confirm("Deseja sair da aplicação?")) {firebase.auth().signOut()};}}/>
             </IconButton>
 
           </Toolbar>

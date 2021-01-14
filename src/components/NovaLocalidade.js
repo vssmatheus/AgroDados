@@ -16,6 +16,7 @@ export const NovaLocalidade = (props) => {
         <Dialog
         fullWidth={true}
         maxWidth='md'
+
         open={props.open}
         onClose={props.close}
         aria-labelledby="max-width-dialog-title"
@@ -27,7 +28,7 @@ export const NovaLocalidade = (props) => {
             >
                 <DialogContent>
                     <Grid container spacing={3}>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <TextValidator
                             variant="outlined"
                             margin="normal"
@@ -41,7 +42,7 @@ export const NovaLocalidade = (props) => {
                             autoComplete='off'
                         />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <TextValidator
                             variant="outlined"
                             margin="normal"
@@ -55,7 +56,7 @@ export const NovaLocalidade = (props) => {
                             autoComplete='off'
                         />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <TextValidator
                                 variant="outlined"
                                 margin="normal"
@@ -69,7 +70,7 @@ export const NovaLocalidade = (props) => {
                                 autoComplete='off'
                             />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <TextValidator
                                 variant="outlined"
                                 margin="normal"

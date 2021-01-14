@@ -7,6 +7,8 @@ import {
 import {Edit, Delete} from '@material-ui/icons';
 import {ScaleLoader} from 'react-spinners';
 import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
 import {getLocalidades, addLocalidade, getLocalidade, updateLocalidade, deleteLocalidade} from '../data/LocalidadeData';
 import {NovaLocalidade} from './NovaLocalidade';
 import Zoom from '@material-ui/core/Zoom';
@@ -15,9 +17,23 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import clsx from 'clsx';
-import { green } from '@material-ui/core/colors';  
 
-export const Localidades = () => {
+const Toast = styled(ToastContainer)`
+  .Toastify__toast--info {
+    background: 'rgb(51, 102, 255)';
+  }
+.Toastify__toast--success {
+    background: 'rgb(51, 187, 102)';
+  }
+.Toastify__toast--warning {
+    background: 'rgb(254, 255, 20)';
+  }
+.Toastify__toast--error {
+    background: 'rgb(255, 102, 102)';
+  }
+`;
+
+export const Localidades = ({type, message}) => {
     const classes = useStyles();
     const [localidades, setLocalidades] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -123,7 +139,21 @@ export const Localidades = () => {
             } catch (error) {
                 toast.error(error.message);
             }
-    }
+        }
+
+        switch (type) {
+            case 'success':
+              toast.success(message);
+              break;
+            case 'warn':
+              toast.warn(message);
+              break;
+            case 'error':
+              toast.error(message);
+              break;
+            default:
+              toast.info(message);
+          }
 
     useEffect(() => {
         getlist();
@@ -160,7 +190,7 @@ export const Localidades = () => {
 
     return (
       <Container className={classes.container}>
-        <ToastContainer/>
+        <Toast />
         <TableContainer component={Paper}>
             <Grid container>
                 <Grid item xs={8}>
@@ -202,7 +232,10 @@ export const Localidades = () => {
                                 <IconButton onClick={() => getOneLocalidade(cust.id)} color="primary" aria-label="update locality">
                                         <Edit />
                                 </IconButton>
-                                <IconButton onClick={() => deleteHandler(cust.id)} color="secondary" aria-label="delete locality">
+                                <IconButton 
+                                    onClick={() => {if(window.confirm("Deseja Deletar esta localidade?")) {deleteHandler(cust.id)};}} 
+                                    color="secondary" 
+                                    aria-label="delete locality">                
                                     <Delete />
                                 </IconButton>
                               </TableCell>
@@ -215,20 +248,24 @@ export const Localidades = () => {
         </TableContainer>
 
         {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-          }}
-          unmountOnExit
-        >
-          <Fab aria-label={fab.label} className={fab.className} color={fab.color} onClick={handleAdd}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))}
+          <Zoom
+            key={fab.color}
+            in={value === index}
+            timeout={transitionDuration}
+            style={{
+              transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
+            }}
+            unmountOnExit>
+            <Fab 
+              style={{backgroundColor: '#149879'}} 
+              aria-label={fab.label} 
+              className={fab.className} 
+              color={fab.color} 
+              onClick={handleAdd}>
+              {fab.icon}
+            </Fab>
+          </Zoom>
+        ))}
 
         <NovaLocalidade
             open={open} 
@@ -249,6 +286,7 @@ export const Localidades = () => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  //layout
   container: {
     padding: theme.spacing(3),
     paddingTop: theme.spacing(10),
@@ -267,31 +305,33 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     },
-    table: {
-        minWidth: 650,
-    }, 
-    title: {
-        flex: '1 1 100%',
-        padding: '20px'
+  //tabela
+  table: {
+      minWidth: 650,
+  }, 
+  title: {
+      flex: '1 1 100%',
+      padding: '20px'
+  },
+  head: {
+      backgroundColor: '#1FAA89',
+      color: theme.palette.common.white,
+  },
+  //buttons
+  button: {
+      margin: theme.spacing(1),
+      float: 'right',
+  },
+  fab: {
+      position: 'absolute',
+      bottom: theme.spacing(2),
+      right: theme.spacing(2),
     },
-    head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    button: {
-        margin: theme.spacing(1),
-        float: 'right',
-    },
-    fab: {
-        position: 'absolute',
-        bottom: theme.spacing(2),
-        right: theme.spacing(2),
+    fabGreen: {
+      color: theme.palette.common.white,
+      backgroundColor: '#1FAA89',
+      '&:hover': {
+        backgroundColor: '#149879',
       },
-      fabGreen: {
-        color: theme.palette.common.white,
-        backgroundColor: green[500],
-        '&:hover': {
-          backgroundColor: green[600],
-        },
-      },
+    },
 }));
