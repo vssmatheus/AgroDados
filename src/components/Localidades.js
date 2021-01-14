@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 import {
   Table, TableBody, TableCell, TableRow, TableHead,
   TableContainer, Paper, makeStyles, Container, useTheme,
-  Typography, Grid, IconButton
+  Typography, Grid, IconButton, Button
 } from '@material-ui/core';
-import {Edit, Delete} from '@material-ui/icons';
+import {Edit, Delete, Eco} from '@material-ui/icons';
 import {ScaleLoader} from 'react-spinners';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,6 +35,7 @@ const Toast = styled(ToastContainer)`
 `;
 
 export const Localidades = ({type, message}) => {
+    
     const classes = useStyles();
     const [localidades, setLocalidades] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -110,50 +112,50 @@ export const Localidades = ({type, message}) => {
     }
 
     const addLocalidadeHandler = async () => {
-            try {
-                 const localidade = {
-                     nome_agricultor,
-                     nome_propriedade,
-                     cultura,
-                     talhao
-                 }
-                if (formMode) {
-                    await addLocalidade(localidade);
-                    toast.success('Localidade Adicionada!');
-                    getlist();
-                    setOpen(false);
-                    setNomeAgricultor('');
-                    setNomePropriedade('');
-                    setCultura('');
-                    setTalhao(''); 
-                }else {
-                    await updateLocalidade(locId, localidade);
-                    toast.success('Editado com sucesso!');
-                    getlist();
-                    setOpen(false);
-                    setNomeAgricultor('');
-                    setNomePropriedade('');
-                    setCultura('');
-                    setTalhao(''); 
-                }
-            } catch (error) {
-                toast.error(error.message);
-            }
+      try {
+        const localidade = {
+            nome_agricultor,
+            nome_propriedade,
+            cultura,
+            talhao
         }
-
-        switch (type) {
-            case 'success':
-              toast.success(message);
-              break;
-            case 'warn':
-              toast.warn(message);
-              break;
-            case 'error':
-              toast.error(message);
-              break;
-            default:
-              toast.info(message);
-          }
+        if (formMode) {
+            await addLocalidade(localidade);
+            toast.success('Localidade Adicionada!');
+            getlist();
+            setOpen(false);
+            setNomeAgricultor('');
+            setNomePropriedade('');
+            setCultura('');
+            setTalhao(''); 
+        }else {
+          await updateLocalidade(locId, localidade);
+          toast.success('Editado com sucesso!');
+          getlist();
+          setOpen(false);
+          setNomeAgricultor('');
+          setNomePropriedade('');
+          setCultura('');
+          setTalhao(''); 
+        }
+      } catch (error) {
+          toast.error(error.message);
+      }
+    }
+    //TOASTI
+    switch (type) {
+        case 'success':
+          toast.success(message);
+          break;
+        case 'warn':
+          toast.warn(message);
+          break;
+        case 'error':
+          toast.error(message);
+          break;
+        default:
+          toast.info(message);
+      }
 
     useEffect(() => {
         getlist();
@@ -238,6 +240,11 @@ export const Localidades = ({type, message}) => {
                                     aria-label="delete locality">                
                                     <Delete />
                                 </IconButton>
+                                  <Link to={"/dashboard"} style={{textDecoration: "none"}}>
+                                    <Button style={{color: "#1FAA89"}}>
+                                      <Eco/>Monitorar
+                                    </Button>
+                                  </Link>
                               </TableCell>
                           </TableRow>
                         ))}    
