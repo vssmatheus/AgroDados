@@ -1,13 +1,12 @@
 import React, {useCallback, useContext} from 'react';
 import { Redirect, withRouter, Link } from "react-router-dom";
-import { authConfig} from "../auth/config";
 import { AuthContext } from "../auth/AuthContext";
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
 import Logo from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
 import { makeStyles } from "@material-ui/core/styles";
-
+import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,7 +31,7 @@ export const Logar = withRouter(({history}) => {
             const { email, senha } = event.target.elements; 
 
             try{
-                await authConfig
+                await firebase
                 .auth()
                 .signInWithEmailAndPassword(email.value, senha.value);
                 history.push('/');

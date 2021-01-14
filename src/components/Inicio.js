@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import { authConfig } from "../auth/config";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,6 +19,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import LogoAgrodados from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
+import firebase from 'firebase';
 
 const drawerWidth = 240;
 
@@ -146,7 +146,7 @@ export const Inicio = ({ history }) => {
             <img src={LogoAgrodados} alt="" width="130px"/>
 
             <IconButton edge="end" style={{marginLeft: "auto"}}>
-              <PowerSettingsNewIcon onClick={() => {if(window.confirm('Deseja sair da aplicação?')) {authConfig.auth().signOut()};}}/>
+              <PowerSettingsNewIcon onClick={() => {if(window.confirm('Deseja sair da aplicação?')) {firebase.auth().signOut()};}}/>
             </IconButton>
 
           </Toolbar>

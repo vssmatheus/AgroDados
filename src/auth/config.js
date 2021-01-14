@@ -1,11 +1,15 @@
-import firebase from "firebase/app";
-import 'firebase/auth';
+import firebase from 'firebase';
 
-export const authConfig = firebase.initializeApp({
-    apiKey: process.env.REACT_APP_FIREBASE_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-});
+const authConfig = () => {
+    return firebase.initializeApp({
+        apiKey: "AIzaSyDtnGhI0DQiD72NIS9GVs4XR1mSouHNeP0",
+        authDomain: "agrodados-b96cd.firebaseapp.com",
+        databaseURL: "https://agrodados-b96cd-default-rtdb.firebaseio.com",
+        projectId: "agrodados-b96cd",
+        storageBucket: "agrodados-b96cd.appspot.com",
+        messagingSenderId: "309520588596",
+        appId: "1:309520588596:web:19a5abb4c8b6adde474f61"
+    });
+}
+
+export default authConfig;

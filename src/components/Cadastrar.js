@@ -1,11 +1,11 @@
 import React, {useCallback} from 'react';
 import { withRouter, Link } from "react-router-dom";
-import { authConfig } from "../auth/config";
 import {FiArrowLeft} from 'react-icons/fi';
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
+import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +30,7 @@ export const Cadastrar = withRouter((props) => {
             event.preventDefault();
             const {email, senha} = event.target.elements; 
             try{
-                await authConfig.auth().createUserWithEmailAndPassword(email.value, senha.value);
+                await firebase.auth().createUserWithEmailAndPassword(email.value, senha.value);
                 history.push('/');
             } catch (error) {
                 console.log(error);

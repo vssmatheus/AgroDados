@@ -1,12 +1,11 @@
 import React, {useCallback } from 'react';
 import { withRouter, Link } from "react-router-dom";
-import { authConfig} from "../auth/config";
 import {FiArrowLeft} from 'react-icons/fi';
 import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
-
+import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +30,7 @@ export const RecuperarSenha = withRouter(({history}) => {
             const { email } = event.target.elements; 
 
             try{
-                await authConfig
+                await firebase
                 .auth()
                 .sendPasswordResetEmail(email.value);
                 window.alert("Verifique seu email para Recuperar sua senha!")
