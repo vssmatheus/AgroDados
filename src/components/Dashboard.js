@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { withRouter } from "react-router-dom";
 import '../css/styles.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Grid, Typography } from '@material-ui/core';
+import Context from '../store/config/config';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -65,12 +66,13 @@ const useStyles = makeStyles((theme) => ({
 export const Dashboard = withRouter(({history}) => {
     const classes = useStyles();
 
+    /* useEffect(() => {
+      getlist();
+    }, []); */
+
+    const localidade = useContext(Context);
+
     return (
-      /* <div style={{ display: 'flex', height: '100%' }}>
-        <div style={{ flexGrow: 1 }}>
-          
-        </div>
-      </div> */
         <div className="">
           <Grid container>
             <Grid item md={12}>
@@ -144,13 +146,13 @@ export const Dashboard = withRouter(({history}) => {
                       Localidade
                     </Typography>
                     <Typography className={classes.info_profile} component="div">
-                      Propriedade: <strong>Fazenda Boa Vista</strong>
+                      Propriedade: <strong>{localidade.store.data.nome_propriedade}</strong>
                     </Typography>
                     <Typography className={classes.info_profile} component="div">
-                      Cultura: <strong>Soja</strong>
+                      Cultura: <strong>{localidade.store.data.cultura}</strong>
                     </Typography> 
                     <Typography className={classes.info_profile} component="div">
-                      Talhão: <strong>02</strong>
+                      Talhão: <strong>{localidade.store.data.talhao}</strong>
                     </Typography>
                   </Grid>
 

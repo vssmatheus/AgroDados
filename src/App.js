@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Inicio } from "./components/Inicio";
 import { Cadastrar } from "./components/Cadastrar";
 import { Dashboard } from "./components/Dashboard";
-import { Localidades } from "./components/Localidades";
+import Localidades from "./components/Localidades";
 import { Logar } from "./components/Logar";
 import { RecuperarSenha } from "./components/RecuperarSenha";
 import { AuthProvider } from "./auth/AuthContext";
 import { RotaPrivada } from "./auth/RotaPrivada";
 import { makeStyles } from "@material-ui/core/styles";
+
 
 const useStyles = makeStyles({
   container: {
