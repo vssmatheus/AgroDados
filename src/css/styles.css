@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .content-app {
     background: transparent;
     display:inline-table;
@@ -47,10 +53,31 @@ button, input{
     transition: filter 0.2s;
 }
 
+.matt-btn-getStarted {
+    background-color: #1FAA89;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 40%;
+    padding: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+    cursor: pointer;
+    transition: filter 0.2s;
+    margin: 24px 24px 24px 48px;
+}
+
 .matt-btn:hover{
     filter: brightness(90%);
 }
 .matt-btn-blue:hover{
+    filter: brightness(90%);
+}
+.matt-btn-getStarted:hover{
     filter: brightness(90%);
 }
 
@@ -72,4 +99,52 @@ button, input{
     font-size: 11pt; 
     text-decoration: none !important; 
     margin-left: 6px
+}
+.text_home{
+    color: #777;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 24px 24px 24px 48px;
+  }
+.profile{
+    margin-left: 80px;
+    padding: 15px;
+}
+
+.footer {
+    font-weight: 500;
+    color: #999;
+    font-size: small;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+@media only screen and (max-device-width: 900px) {
+    .img_home{
+        display: none;
+    }
+    .matt-btn-getStarted{
+        width: 50%;
+        font-size: 0.8rem;
+        margin: 24px;
+    }
+    .profile{
+        margin-left: 40px;
+        padding: 15px;
+    }
+    .text_home{
+        font-size: 1rem;
+      }
+      .text_home{
+        color: #777;
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin: 24px;
+      }
 }

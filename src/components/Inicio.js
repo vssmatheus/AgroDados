@@ -16,6 +16,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import HomeIcon from '@material-ui/icons/Home'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import LogoAgrodados from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
@@ -97,6 +98,11 @@ const useStyles = makeStyles((theme) => ({
 export const Inicio = ({ history }) => {
   
   const itemsList = [
+    {
+      text: "Home",
+      icon: <HomeIcon style={{color: "#DCE6F0"}}/>,
+      onClick: () => history.push("/")
+    },
     {
       text: "Dashboard",
       icon: <DashboardIcon style={{color: "#DCE6F0"}}/>,
@@ -185,7 +191,9 @@ export const Inicio = ({ history }) => {
           })}
         </List>
       </Drawer>   
-   
+      <div class="footer">
+        <p>Desenvolvido por: Matheus Vieira</p>
+      </div>
     </div>
     );
 };

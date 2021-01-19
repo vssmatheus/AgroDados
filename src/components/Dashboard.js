@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import '../css/styles.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import { FiArrowLeft } from 'react-icons/fi';
 import { Grid, Typography } from '@material-ui/core';
 import Context from '../store/config/config';
 
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(2),
       display: "flex",
       width: "250px",
-      borderTop: "4px solid #149879",          
+      borderTop: "5px solid #149879",          
       flexDirection: "column",
       position: "relative"
     },
@@ -167,6 +168,12 @@ export const Dashboard = withRouter(({history}) => {
                 </Grid>
               </Paper>
             </Grid>
+            <div className="back-to-login">
+                <Link className="back-link" to="/localidades">
+                  <FiArrowLeft size={25} color="#555" />
+                  <span className="back-text">Monitorar outra localidade</span>
+                </Link>
+            </div>
         </div>
     );
 });
