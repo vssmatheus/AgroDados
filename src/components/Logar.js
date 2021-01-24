@@ -11,12 +11,13 @@ import firebase from 'firebase';
 const useStyles = makeStyles((theme) => ({
     root: {
       overflow: "hidden",
-      margin: 0,
+      margin: '0 auto',
       height: "100vh",
       width: "100%",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      position: "relative",
     },
   }));
 
@@ -58,23 +59,25 @@ export const Logar = withRouter(({history}) => {
                 <Container maxWidth="md" >
                     <div className="card-login">
                         {/* <h1>Entrar</h1> */}
-                        <img src={Logo} alt="" width="250px"/>
-                        <form onSubmit={loginFunc}>
-                            <div>
-                                <input className="input-email" type="email" placeholder="Email" name="email" required/>
-                            </div>
-                            <div>
-                                <input className="input-senha" placeholder="Senha" type="password" name="senha" required/>
-                            </div>
-                            <div>
-                                <button className="matt-btn" type="submit" >Login</button>
-                            </div>
-                            <div className="options-login">
-                                <Link id="recuperarSenha" to="/recuperar">Recuperar senha</Link>
-                                <span>|</span>
-                                <Link id="cadastrar" to="/cadastrar">Cadastrar-se</Link>
-                            </div>
-                        </form>
+                        <div className="card-login-container">
+                            <img src={Logo} alt="" width="250px"/>
+                            <form onSubmit={loginFunc}>
+                                <div>
+                                    <input className="input-email" type="email" placeholder="Email" name="email" required/>
+                                </div>
+                                <div>
+                                    <input className="input-senha" placeholder="Senha" type="password" name="senha" required/>
+                                </div>
+                                <div>
+                                    <button className="matt-btn" type="submit" >Login</button>
+                                </div>
+                                <div className="options-login">
+                                    <Link id="recuperarSenha" to="/recuperar">Recuperar senha</Link>
+                                    <span>|</span>
+                                    <Link id="cadastrar" to="/cadastrar">Cadastrar-se</Link>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </Container>            
             </React.Fragment>

@@ -1,13 +1,20 @@
 .card-login{
     background: #ffffff;
     border-radius: 10px;
-    width: auto;
-    display: block;
-    padding: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 25px;
+    position: relative;
     -webkit-box-shadow: 1px 2px 20px 2px rgba(193,230,202,0.56);
     -moz-box-shadow: 1px 2px 20px 2px rgba(193,230,202,0.56);
-    box-shadow: 1px 2px 20px 2px rgba(193,230,202,0.56);
+    box-shadow: 1px 2px 20px 2px rgba(55, 92, 64, 0.56);
+}
+
+.card-login-container{
+    padding: 2px;
 }
 
 .card-login > h1{
@@ -30,8 +37,12 @@
     height: 45px;
     background: transparent;
     padding: 0 5px;
-    margin: 1% auto;
+    margin: 3% auto;
     border-bottom: rgb(140, 201, 135) 2px solid;
+}
+
+.options-login{
+    margin: 3% auto;
 }
 
 .options-login > #recuperarSenha{

@@ -64,88 +64,100 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+  //const [isLocal, setisLocal] = useState(null);
+
 export const Dashboard = withRouter(({history}) => {
     const classes = useStyles();
 
     /* useEffect(() => {
       getlist();
     }, []); */
-
+    
     const localidade = useContext(Context);
 
     return (
-        <div className="">
-          <Grid container>
-            <Grid item md={12}>
-              <Typography className={classes.title_page} variant="h5" component="div">
-                Monitoramento
-              </Typography>
-            </Grid>
+      <div className="">
+        <Grid container>
+          <Grid item md={12}>
+            <Typography className={classes.title_page} variant="h5" component="div">
+              Monitoramento
+            </Typography>
           </Grid>
-          <Grid container className={classes.container}>
-            <Grid item xs={12} md={3}>
-              <Paper className={classes.verticalPaper} alignItems="flex-start">
-                  <Typography className={classes.indicator} component="div">
-                    Temperatura
-                  </Typography>
-                  <Typography className={classes.indicator_value} component="div">
-                    35°C
-                  </Typography> 
-                  <Typography className={classes.indicator_name} component="div">
-                    sensor 01
-                  </Typography>       
-                </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Paper className={classes.verticalPaper} alignItems="flex-start">
-                  <Typography className={classes.indicator} component="div">
-                    Umidade (Solo)
-                  </Typography>
-                  <Typography className={classes.indicator_value} component="div">
-                    26%
-                  </Typography> 
-                  <Typography className={classes.indicator_name} component="div">
-                    sensor 02
-                  </Typography>                  
-                </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Paper className={classes.verticalPaper} alignItems="flex-start">
-                  <Typography className={classes.indicator} component="div">
-                    Umidade (Ar)
-                  </Typography>
-                  <Typography className={classes.indicator_value} component="div">
-                    15%
-                  </Typography> 
-                  <Typography className={classes.indicator_name} component="div">
-                    sensor 03
-                  </Typography>                  
-                </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Paper className={classes.verticalPaper} alignItems="flex-start" >
-                  <Typography className={classes.indicator} component="div">
-                    Pressão (Solo)
-                  </Typography>
-                  <Typography className={classes.indicator_value} component="div">
-                    10.7
-                  </Typography> 
-                  <Typography className={classes.indicator_name} component="div">
-                    sensor 04
-                  </Typography>                  
-                </Paper>
-            </Grid>
+        </Grid>
+        <Grid container className={classes.container}>
+          <Grid item xs={12} md={3}>
+            <Paper className={classes.verticalPaper} alignItems="flex-start">
+                <Typography className={classes.indicator} component="div">
+                  Temperatura
+                </Typography>
+                <Typography className={classes.indicator_value} component="div">
+                  35°C
+                </Typography> 
+                <Typography className={classes.indicator_name} component="div">
+                  sensor 01
+                </Typography>       
+              </Paper>
           </Grid>
+          <Grid item xs={12} md={3}>
+            <Paper className={classes.verticalPaper} alignItems="flex-start">
+                <Typography className={classes.indicator} component="div">
+                  Umidade (Solo)
+                </Typography>
+                <Typography className={classes.indicator_value} component="div">
+                  26%
+                </Typography> 
+                <Typography className={classes.indicator_name} component="div">
+                  sensor 02
+                </Typography>                  
+              </Paper>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Paper className={classes.verticalPaper} alignItems="flex-start">
+                <Typography className={classes.indicator} component="div">
+                  Umidade (Ar)
+                </Typography>
+                <Typography className={classes.indicator_value} component="div">
+                  15%
+                </Typography> 
+                <Typography className={classes.indicator_name} component="div">
+                  sensor 03
+                </Typography>                  
+              </Paper>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Paper className={classes.verticalPaper} alignItems="flex-start" >
+                <Typography className={classes.indicator} component="div">
+                  Pressão (Solo)
+                </Typography>
+                <Typography className={classes.indicator_value} component="div">
+                  10.7
+                </Typography> 
+                <Typography className={classes.indicator_name} component="div">
+                  sensor 04
+                </Typography>                  
+              </Paper>
+          </Grid>
+        </Grid>
 
-          {/* Segunta linha do GRID */}
+        {/* Segunta linha do GRID */}
 
-          <Grid className={classes.profile} xs={12}>
-              <Paper>
-                <Grid container className={classes.container_profile}>
-                  <Grid item md={6} xs={12} alignItems="flex-start" >
-                    <Typography className={classes.title_profile} component="div">
-                      Localidade
-                    </Typography>
+        <Grid className={classes.profile} xs={12}>
+          <Paper>
+            <Grid container className={classes.container_profile}>
+              <Grid item md={6} xs={12} alignItems="flex-start" >
+                <Typography className={classes.title_profile} component="div">
+                  Localidade
+                </Typography>
+                {!localidade.store.data.talhao ? (
+                  <Typography>
+                    Nenhuma Localidade selecionada!
+                    <Link className="back-link-dash" to="/localidades">
+                      <FiArrowLeft size={25} color="#1f8aaa" />
+                      <span className="back-text">Selecione uma localidade</span>
+                    </Link>
+                  </Typography>
+                ) : (
+                  <>
                     <Typography className={classes.info_profile} component="div">
                       Propriedade: <strong>{localidade.store.data.nome_propriedade}</strong>
                     </Typography>
@@ -155,25 +167,26 @@ export const Dashboard = withRouter(({history}) => {
                     <Typography className={classes.info_profile} component="div">
                       Talhão: <strong>{localidade.store.data.talhao}</strong>
                     </Typography>
-                  </Grid>
+                    <Link className="back-link-dash" to="/localidades">
+                      <FiArrowLeft size={25} color="#1f8aaa" />
+                      <span className="back-text">Monitorar outra localidade</span>
+                    </Link>
+                  </>
+                )}
+                
+              </Grid>
 
-                  <Grid item md={6} xs={12} alignItems="flex-start" >
-                    <Typography className={classes.title_profile} component="div">
-                      status
-                    </Typography>
-                    <Typography className={classes.info_profile} component="div">
-                      Chart de status
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Paper>
+              <Grid item md={6} xs={12} alignItems="flex-start">
+                <Typography className={classes.title_profile} component="div">
+                  status
+                </Typography>
+                <Typography className={classes.info_profile} component="div">
+                  Chart de status
+                </Typography>
+              </Grid>
             </Grid>
-            <div className="back-to-login">
-                <Link className="back-link" to="/localidades">
-                  <FiArrowLeft size={25} color="#555" />
-                  <span className="back-text">Monitorar outra localidade</span>
-                </Link>
-            </div>
-        </div>
+          </Paper>
+        </Grid>
+      </div>
     );
 });

@@ -51,21 +51,23 @@ export const RecuperarSenha = withRouter(({history}) => {
                 <CssBaseline />
                 <Container maxWidth="md" >
                     <div className="card-login">
-                        <h1>Esqueceu sua senha?</h1>
-                        <p>Insira o seu email cadastrado para recuperar sua conta,<br/>em breve enviaremos um link para recuperação!</p>
-                        <form onSubmit={recuperarFunc}>
-                            <div>
-                                <input className="input-email" type="email" placeholder="Seu e-mail" name="email" required/>
+                        <div className="card-login-container">
+                            <h1>Esqueceu sua senha?</h1>
+                            <p>Insira o seu email cadastrado para recuperar sua conta,<br/>em breve enviaremos um link para recuperação!</p>
+                            <form onSubmit={recuperarFunc}>
+                                <div>
+                                    <input className="input-email" type="email" placeholder="Seu e-mail" name="email" required/>
+                                </div>
+                                <div>
+                                    <button className="matt-btn-blue" type="submit" >Enviar</button>
+                                </div>
+                            </form>
+                            <div className="back-to-login">
+                                <Link className="back-link" to="/logar">
+                                    <FiArrowLeft size={25} color="#555" />
+                                    <span className="back-text">Voltar ao login</span>
+                                </Link>
                             </div>
-                            <div>
-                                <button className="matt-btn-blue" type="submit" >Enviar</button>
-                            </div>
-                        </form>
-                        <div className="back-to-login">
-                            <Link className="back-link" to="/logar">
-                                <FiArrowLeft size={25} color="#555" />
-                                <span className="back-text">Voltar ao login</span>
-                            </Link>
                         </div>
                     </div>
                 </Container>          

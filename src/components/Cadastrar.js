@@ -44,23 +44,25 @@ export const Cadastrar = withRouter((props) => {
                 <CssBaseline/>
                 <Container maxWidth="md">
                     <div className="card-login">
-                        <h1>Cadastrar-se</h1>
-                        <form onSubmit={cadastroFunc}>
-                            <div>
-                                <input placeholder="Seu email?" className="input-email" type="email" name="email"/>
+                        <div className="card-login-container">
+                            <h1>Cadastrar-se</h1>
+                            <form onSubmit={cadastroFunc}>
+                                <div>
+                                    <input placeholder="Seu email?" className="input-email" type="email" name="email"/>
+                                </div>
+                                <div>
+                                    <input placeholder="Defina uma senha" className="input-senha" type="password" name="senha"/>
+                                </div>
+                                <div>
+                                    <button className="matt-btn-blue" type="submit">Cadastrar</button>
+                                </div>                        
+                            </form>
+                            <div className="back-to-login">
+                                <Link className="back-link" to="/logar">
+                                    <FiArrowLeft size={25} color="#555" />
+                                    <span className="back-text">Voltar ao login</span>
+                                </Link>
                             </div>
-                            <div>
-                                <input placeholder="Defina uma senha" className="input-senha" type="password" name="senha"/>
-                            </div>
-                            <div>
-                                <button className="matt-btn-blue" type="submit">Cadastrar</button>
-                            </div>                        
-                        </form>
-                        <div className="back-to-login">
-                            <Link className="back-link" to="/logar">
-                                <FiArrowLeft size={25} color="#555" />
-                                <span className="back-text">Voltar ao login</span>
-                            </Link>
                         </div>
                     </div>                                            
                 </Container>

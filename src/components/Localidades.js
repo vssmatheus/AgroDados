@@ -267,7 +267,7 @@ const Localidades = ({type, message, dispatch}, props) => {
           in={value === index}
           timeout={transitionDuration}
           style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
+            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`        
           }}
           unmountOnExit>
           <Fab 
