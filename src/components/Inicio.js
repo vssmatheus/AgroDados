@@ -20,7 +20,10 @@ import HomeIcon from '@material-ui/icons/Home'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import LogoAgrodados from '../assets/pngs/LOGO-AGRODADOS-SAMPLE.png';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/database';
 
 const drawerWidth = 240;
 

@@ -1,31 +1,14 @@
-import React from "react"; //{ useCallback }
+import React from "react"; 
 import '../css/styles.css';
 import {Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid} from '@material-ui/core';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 export const NovaLocalidade = (props) => {
 
-    /* const onSubmitCallBack = useCallback(
-        () => {
-            props.addLocalidade();
-        },
-        [],
-      ); */
-
     return (
-        <Dialog
-        fullWidth={true}
-        maxWidth='md'
-
-        open={props.open}
-        onClose={props.close}
-        aria-labelledby="max-width-dialog-title"
-        >
+        <Dialog fullWidth={true} maxWidth='md' open={props.open} onClose={props.close} aria-labelledby="max-width-dialog-title">
             <DialogTitle>{props.formmode ?  'Adicionar nova' : 'Editar'}  localidade</DialogTitle>
-            <ValidatorForm
-            //  onSubmit={onSubmitCallBack}
-                onSubmit={props.addLocalidade}
-            >
+            <ValidatorForm onSubmit={props.addLocalidade}>
                 <DialogContent>
                     <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>

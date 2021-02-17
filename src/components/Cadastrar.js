@@ -5,7 +5,10 @@ import '../css/login.css';
 import {CssBaseline} from '@material-ui/core';
 import {Container} from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/database';
 
 const useStyles = makeStyles((theme) => ({
     root: {

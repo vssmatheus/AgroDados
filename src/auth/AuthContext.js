@@ -1,7 +1,10 @@
 import React, { useEffect, useState, createContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/database';
 
 const useStyles = makeStyles((theme) => ({
     root: {

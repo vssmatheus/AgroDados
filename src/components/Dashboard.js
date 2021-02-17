@@ -7,6 +7,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Grid, Typography } from '@material-ui/core';
 import Context from '../store/config/config';
 import api from '../services/api';
+import GaugeChart from 'react-gauge-chart'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     horizontalPaper: {
       margin: theme.spacing(4),
       padding: theme.spacing(3),
-      position: "absolute"
+      position: "relative"
     },
     verticalPaper: {
       margin: theme.spacing(1),
@@ -33,8 +34,9 @@ const useStyles = makeStyles((theme) => ({
       position: "relative"
     },
     title_page: {
-      paddingLeft: theme.spacing(9),
-      paddingTop: theme.spacing(10),
+      paddingLeft: theme.spacing(12),
+      paddingTop: theme.spacing(12),
+
     },
     indicator: {
       fontSize: '12pt',
@@ -52,10 +54,16 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "auto",
       fontWeight: "500"
     },
+    bucar_dados: {
+      color: '#149879',
+      fontWeight: 'bold',
+      fontSize: '15pt'
+    },
     profile: {
       paddingLeft: theme.spacing(9),
       margin: theme.spacing(1),
       padding: theme.spacing(3),
+      width: "100%"
     },
     title_profile: {
       fontWeight: "600",
@@ -85,16 +93,16 @@ export const Dashboard = withRouter(({history}) => {
 
     return (
       <div className="">
-        <Grid container spacing={2}>
+        <Grid container spacing={2} >
           <Grid item md={12}>
             <Typography className={classes.title_page} variant="h5" component="div">
               Monitoramento
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={2} className={classes.container}>
+        <Grid container spacing={2} className={classes.profile}>
         {indicators != null ? indicators.map((analogData, i) => (
-              <Grid item xs={12} md={3} key={i}>
+              <Grid item xs={12} sm={3} key={i}>
               <Paper className={classes.verticalPaper} >
                   <Typography className={classes.indicator} component="div">
                     {analogData.type}
@@ -107,26 +115,21 @@ export const Dashboard = withRouter(({history}) => {
                   </Typography>       
                 </Paper>
             </Grid>
-            )): <div>Não há dados</div>}
-          {/* <Grid item xs={12} md={3}>
-            <Paper className={classes.verticalPaper} >
-                <Typography className={classes.indicator} component="div">
-                  Umidade (Solo)
+            )): 
+            <Grid container spacing={2} >
+              <Grid item xs={12}>
+                <Typography className={classes.bucar_dados} variant="h5" component="div">
+                Buscando conexão com o tensiômetro...
                 </Typography>
-                <Typography className={classes.indicator_value} component="div">
-                  26%
-                </Typography> 
-                <Typography className={classes.indicator_name} component="div">
-                  sensor 02
-                </Typography>                  
-              </Paper>
-          </Grid> */}
+              </Grid>
+            </Grid>
+            }
         </Grid>
 
         {/* Segunta linha do GRID */}
 
         <Grid className={classes.profile}>
-          <Paper>
+          <Paper style={{margin: "-40px 14px 0px 14px"}}>
             <Grid container className={classes.container_profile}>
               <Grid item md={6} xs={12}  >
                 <Typography className={classes.title_profile} component="div">
@@ -164,9 +167,17 @@ export const Dashboard = withRouter(({history}) => {
                 <Typography className={classes.title_profile} component="div">
                   status
                 </Typography>
-                <Typography className={classes.info_profile} component="div">
-                  Chart de status
-                </Typography>
+                {/* https://www.npmjs.com/package/react-gauge-chart */}
+                <GaugeChart id="gauge-chart5"
+                  nrOfLevels={50}
+                  arcsLength={[0.1, 0.1, 0.1]}
+                  arcWidth = {0.1}
+                  textColor = {"#000000"}
+                  style = {{width: "75%", margin: "0 auto" }}
+                  colors={['#5BE12C', '#F5CD19', '#EA4228']}
+                  percent={0.37}
+                  arcPadding={0.02}
+                />
               </Grid>
             </Grid>
           </Paper>
