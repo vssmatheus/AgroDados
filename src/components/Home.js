@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export const Home = withRouter(({history}) => {
+export const Home = withRouter(() => {
     const classes = useStyles();
 
     return (
@@ -44,9 +44,9 @@ export const Home = withRouter(({history}) => {
             </Grid>
           </Grid>
 
-          <Grid className={'profile'} xs={12}>
-            <Grid container className={classes.container_profile}>
-              <Grid item md={6} xs={12} alignItems="flex-start" >
+          <Grid className={'profile'}>
+            <Grid container spacing={2} className={classes.container_profile}>
+              <Grid item xs={12} sm={6}>
                 <Typography component="div">
                   <p className={"text_home"}>O sistema <strong style={{color: '#149879'}} >Agrodados</strong> é integrado a um tensiômetro digital, do qual o intuito é coletar dados de uma 
                   determinada localidade rural, podendo assim, auxiliar no controle dinâmico da irrigação na lavoura.</p>
@@ -57,7 +57,7 @@ export const Home = withRouter(({history}) => {
                 
                 {/* <button className="matt-btn">Login</button> */}
               </Grid>
-              <Grid item md={6} xs={12}  className={'img_home'}  alignItems="flex-start" >
+              <Grid item xs={6} sm={6} className={'img_home'}>
                 <div className={classes.img_home}>
                   <img src={EcoIllustration} alt="" width="400"/>
                 </div> 

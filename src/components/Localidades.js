@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {useHistory} from 'react-router-dom';
 import {
   Table, TableBody, TableCell, TableRow, TableHead,
-  TableContainer, Paper, makeStyles, Container, useTheme,
+  TableContainer, Paper, makeStyles, Container,
   Typography, Grid, IconButton, Button
 } from '@material-ui/core';
 import {Edit, Delete, Eco} from '@material-ui/icons';
@@ -12,12 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import {getLocalidades, addLocalidade, getLocalidade, updateLocalidade, deleteLocalidade} from '../data/LocalidadeData';
 import {NovaLocalidade} from './NovaLocalidade';
-import Zoom from '@material-ui/core/Zoom';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import UpIcon from '@material-ui/icons/KeyboardArrowUp';
-import clsx from 'clsx';
 import Conect from '../store/config/conect';
 import { pushLocalidade } from '../store/localidadeProfile';
 
@@ -36,7 +32,7 @@ const Toast = styled(ToastContainer)`
   }
 `;
 
-const Localidades = ({type, message, dispatch}, props) => {
+const Localidades = ({type, message, dispatch}) => {
 
   const classes = useStyles();
   const [localidades, setLocalidades] = useState([]);
@@ -49,12 +45,8 @@ const Localidades = ({type, message, dispatch}, props) => {
   const [cultura, setCultura] =  useState('');
   const [talhao, setTalhao] = useState('');
   const history = useHistory();
-  const override =`
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    border-color: red;
-  `;
+  const override =`display: flex; align-items: center; justify-content: center; border-color: red;`;
+
   const handleClose = () => {
     setOpen(false);
   }
@@ -163,35 +155,6 @@ const Localidades = ({type, message, dispatch}, props) => {
     getlist();
   }, []);
 
-  const theme = useTheme();
-  const [value] = React.useState(0);
-
-  const transitionDuration = {
-    enter: theme.transitions.duration.enteringScreen,
-    exit: theme.transitions.duration.leavingScreen,
-  };
-  
-  const fabs = [
-    {
-      color: 'primary',
-      className: classes.fab,
-      icon: <AddIcon />,
-      label: 'Add',
-    },
-    {
-      color: 'secondary',
-      className: classes.fab,
-      icon: <EditIcon />,
-      label: 'Edit',
-    },
-    {
-      color: 'inherit',
-      className: clsx(classes.fab, classes.fabGreen),
-      icon: <UpIcon />,
-      label: 'Expand',
-    },
-  ];
-
   const pushDataLocalidade = localidade =>{
     dispatch(pushLocalidade(localidade));
     history.push('/dashboard');
@@ -260,27 +223,6 @@ const Localidades = ({type, message, dispatch}, props) => {
               </TableBody>
           </Table>  
       </TableContainer>
-
-      {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`        
-          }}
-          unmountOnExit>
-          <Fab 
-            style={{backgroundColor: '#149879'}} 
-            aria-label={fab.label} 
-            className={fab.className} 
-            color={fab.color} 
-            onClick={handleAdd}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))}
-
       <NovaLocalidade
           open={open} 
           close={handleClose}
@@ -295,6 +237,11 @@ const Localidades = ({type, message, dispatch}, props) => {
           changeTalhao={handleTalhao}
           addLocalidade = {addLocalidadeHandler}
       />
+
+      <Fab onClick={handleAdd} aria-label="add" className={classes.fab}>
+        <AddIcon/>
+      </Fab>
+
   </Container>
   );
 };
@@ -339,15 +286,11 @@ const useStyles = makeStyles((theme) => ({
       float: 'right',
   },
   fab: {
-      position: 'absolute',
+      position: 'fixed',
+      backgroundColor: '#1FAA89',
+      '&:hover': { backgroundColor: '#149879',},
+      color: '#ffffff',
       bottom: theme.spacing(2),
       right: theme.spacing(2),
-    },
-    fabGreen: {
-      color: theme.palette.common.white,
-      backgroundColor: '#1FAA89',
-      '&:hover': {
-        backgroundColor: '#149879',
-      },
     },
 }));

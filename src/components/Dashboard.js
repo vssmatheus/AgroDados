@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import '../css/styles.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Grid, Typography } from '@material-ui/core';
 import Context from '../store/config/config';
+import api from '../services/api';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -68,38 +69,47 @@ const useStyles = makeStyles((theme) => ({
 
 export const Dashboard = withRouter(({history}) => {
     const classes = useStyles();
+    const [indicators, setIndicators] = useState(null);
 
-    /* useEffect(() => {
-      getlist();
-    }, []); */
+    useEffect(() => {
+      let timer = setInterval(() => {
+        api.get('/')
+        .then(response => {
+          setIndicators(response.data.analogData);
+        })
+      }, 6000);
+      return timer;
+    }, []);
     
     const localidade = useContext(Context);
 
     return (
       <div className="">
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item md={12}>
             <Typography className={classes.title_page} variant="h5" component="div">
               Monitoramento
             </Typography>
           </Grid>
         </Grid>
-        <Grid container className={classes.container}>
-          <Grid item xs={12} md={3}>
-            <Paper className={classes.verticalPaper} alignItems="flex-start">
-                <Typography className={classes.indicator} component="div">
-                  Temperatura
-                </Typography>
-                <Typography className={classes.indicator_value} component="div">
-                  35°C
-                </Typography> 
-                <Typography className={classes.indicator_name} component="div">
-                  sensor 01
-                </Typography>       
-              </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper className={classes.verticalPaper} alignItems="flex-start">
+        <Grid container spacing={2} className={classes.container}>
+        {indicators != null ? indicators.map((analogData, i) => (
+              <Grid item xs={12} md={3} key={i}>
+              <Paper className={classes.verticalPaper} >
+                  <Typography className={classes.indicator} component="div">
+                    {analogData.type}
+                  </Typography>
+                  <Typography className={classes.indicator_value} component="div">
+                    {analogData.value}{analogData.unidade_medida}
+                  </Typography> 
+                  <Typography className={classes.indicator_name} component="div">
+                    sensor: {analogData.chanel}
+                  </Typography>       
+                </Paper>
+            </Grid>
+            )): <div>Não há dados</div>}
+          {/* <Grid item xs={12} md={3}>
+            <Paper className={classes.verticalPaper} >
                 <Typography className={classes.indicator} component="div">
                   Umidade (Solo)
                 </Typography>
@@ -110,41 +120,15 @@ export const Dashboard = withRouter(({history}) => {
                   sensor 02
                 </Typography>                  
               </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper className={classes.verticalPaper} alignItems="flex-start">
-                <Typography className={classes.indicator} component="div">
-                  Umidade (Ar)
-                </Typography>
-                <Typography className={classes.indicator_value} component="div">
-                  15%
-                </Typography> 
-                <Typography className={classes.indicator_name} component="div">
-                  sensor 03
-                </Typography>                  
-              </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper className={classes.verticalPaper} alignItems="flex-start" >
-                <Typography className={classes.indicator} component="div">
-                  Pressão (Solo)
-                </Typography>
-                <Typography className={classes.indicator_value} component="div">
-                  10.7
-                </Typography> 
-                <Typography className={classes.indicator_name} component="div">
-                  sensor 04
-                </Typography>                  
-              </Paper>
-          </Grid>
+          </Grid> */}
         </Grid>
 
         {/* Segunta linha do GRID */}
 
-        <Grid className={classes.profile} xs={12}>
+        <Grid className={classes.profile}>
           <Paper>
             <Grid container className={classes.container_profile}>
-              <Grid item md={6} xs={12} alignItems="flex-start" >
+              <Grid item md={6} xs={12}  >
                 <Typography className={classes.title_profile} component="div">
                   Localidade
                 </Typography>
@@ -176,7 +160,7 @@ export const Dashboard = withRouter(({history}) => {
                 
               </Grid>
 
-              <Grid item md={6} xs={12} alignItems="flex-start">
+              <Grid item md={6} xs={12} >
                 <Typography className={classes.title_profile} component="div">
                   status
                 </Typography>

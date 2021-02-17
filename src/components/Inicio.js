@@ -151,8 +151,12 @@ export const Inicio = ({ history }) => {
               {/* LOGO AGRODADOS */}
             <img src={LogoAgrodados} alt="" width="130px"/>
 
-            <IconButton edge="end" style={{marginLeft: "auto"}}>
-              <PowerSettingsNewIcon onClick={() => {if(window.confirm("Deseja sair da aplicação?")) {firebase.auth().signOut()};}}/>
+            <IconButton 
+              edge="end" 
+              style={{marginLeft: "auto"}}
+              onClick={() => {if(window.confirm("Deseja sair da aplicação?")) {firebase.auth().signOut()};}}
+              >
+              <PowerSettingsNewIcon/>
             </IconButton>
 
           </Toolbar>
@@ -190,10 +194,7 @@ export const Inicio = ({ history }) => {
             );
           })}
         </List>
-      </Drawer>   
-      <div class="footer">
-        <p>Desenvolvido por: Matheus Vieira</p>
-      </div>
+      </Drawer>
     </div>
     );
 };
