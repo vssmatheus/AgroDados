@@ -33,7 +33,7 @@ export const AuthProvider = (props) =>{
     if (aguardando){
         return (
             <div className={classes.root}>
-                <CircularProgress size={40} />
+                <CircularProgress className="loading" size={40}/>
             </div>
         ); 
     }

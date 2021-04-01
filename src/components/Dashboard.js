@@ -7,7 +7,8 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Grid, Typography } from '@material-ui/core';
 import Context from '../store/config/config';
 import api from '../services/api';
-import GaugeChart from 'react-gauge-chart'
+import GaugeChart from 'react-gauge-chart';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: "500"
     },
     bucar_dados: {
-      color: '#149879',
+      color: 'gray',
       fontWeight: 'bold',
       fontSize: '15pt'
     },
@@ -119,7 +120,10 @@ export const Dashboard = withRouter(({history}) => {
             <Grid container spacing={2} >
               <Grid item xs={12}>
                 <Typography className={classes.bucar_dados} variant="h5" component="div">
-                Buscando conexão com o tensiômetro...
+                  <div className="espera_dados">
+                    <CircularProgress className="loading-espera_dados" size={30} color={"#149879"} />
+                    Conectando ao tensiômetro...
+                  </div>
                 </Typography>
               </Grid>
             </Grid>
@@ -173,7 +177,7 @@ export const Dashboard = withRouter(({history}) => {
                   arcsLength={[0.1, 0.1, 0.1]}
                   arcWidth = {0.1}
                   textColor = {"#000000"}
-                  style = {{width: "75%", margin: "0 auto" }}
+                  style = {{width: "60%", margin: "0 auto" }}
                   colors={['#5BE12C', '#F5CD19', '#EA4228']}
                   percent={0.37}
                   arcPadding={0.02}

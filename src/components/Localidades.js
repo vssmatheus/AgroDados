@@ -188,7 +188,7 @@ const Localidades = ({type, message, dispatch}) => {
                               <ScaleLoader 
                               css={override}
                               size={150}
-                              color={"#eb4034"}
+                              color={"#149879"}
                               loading={loading}/>
                           </TableCell>
                       </TableRow>

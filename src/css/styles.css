@@ -122,6 +122,26 @@ button, input{
     padding: 15px;
 }
 
+.espera_dados{
+    width: initial;
+    height: 100px;
+    margin: 0;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-espera_dados{
+    margin:10px;
+    color: #149879;
+}
+
+.loading{
+    color: #149879;
+}
+
 .footer {
     font-weight: 500;
     color: #999;
@@ -158,4 +178,7 @@ button, input{
         font-weight: 400;
         margin: 24px;
       }
+      .espera_dados{
+        width: fit-content;
+    }
 }
