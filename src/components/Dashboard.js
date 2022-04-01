@@ -8,7 +8,6 @@ import { Grid, Typography } from '@material-ui/core';
 import Context from '../store/config/config';
 import api from '../services/api';
 import GaugeChart from 'react-gauge-chart';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import {ScaleLoader} from 'react-spinners';
 
 const useStyles = makeStyles((theme) => ({
