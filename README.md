@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Versions
+## Versions
 
 - Node -> 14.18.3
 - React -> version 18.2.0
