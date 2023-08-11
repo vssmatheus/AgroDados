@@ -2,10 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+<<<<<<< HEAD
+# Versions
+
+- Node -> 14.18.3
+- React -> version 18.2.0
+=======
 ## Versions
 
 - Node -> 14.18.3
 - React -> 18.2.0
+>>>>>>> main
 
 ## Available Scripts
 
